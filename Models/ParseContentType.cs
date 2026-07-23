@@ -1,7 +1,6 @@
 ﻿namespace Kamsoft.Models;
 
-public enum ParseContentType
-{
+public enum ParseContentType {
     CSV, INTERNAL_JSON
     
 }
