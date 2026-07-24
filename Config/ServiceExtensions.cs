@@ -11,5 +11,6 @@ public static class ServiceExtensions {
     public static void AddParsers(this IServiceCollection services) {
         services.AddTransient<IContentParser, CsvParser>();
         services.AddTransient<IContentParser, InternalJsonParser>();
+        services.AddTransient<ParserProvider>();
     }
 }

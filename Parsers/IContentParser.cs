@@ -6,6 +6,5 @@ public interface IContentParser {
     
     ParseContentType Type { get; }
 
-    object Parse(string content);
-
+    IList<object?> Parse(string content);
 }
