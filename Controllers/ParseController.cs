@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using Kamsoft.Dto;
 using Kamsoft.Models;
+using Kamsoft.Parsers;
 using Kamsoft.Util;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,10 +22,16 @@ public class ParseController(
                 message = $"Unsupported type '{request.Type}'."
             });
         }
-        
-        string decodedContent = base64Decoder.Decode(request.Content);
 
-        IList<object?> objects = parserProvider.Get(type).Parse(decodedContent);
+        if (!base64Decoder.TryDecode(request.Content, out string decodedContent)) {
+            return BadRequest(new {
+                message = "Content is not valid Base64."
+            });
+        }
+
+        IContentParser parser = parserProvider.Get(type);
+
+        IList<object?> objects = parser.Parse(decodedContent);
 
         return Ok(objects);
 
