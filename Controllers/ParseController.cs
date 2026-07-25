@@ -1,4 +1,5 @@
 ﻿using Kamsoft.Dto;
+using Kamsoft.Mappers;
 using Kamsoft.Models;
 using Kamsoft.Parsers;
 using Kamsoft.Util;
@@ -10,7 +11,8 @@ namespace Kamsoft.Controllers;
 [Route("api/v1")]
 public class ParseController(
     StringBase64Decoder base64Decoder,
-    ParserProvider parserProvider
+    ParserProvider parserProvider,
+    IParseMapper parseMapper
     ) : ControllerBase {
     
     [HttpPost("parse-content")]
@@ -32,9 +34,7 @@ public class ParseController(
 
         IList<Dictionary<string, object?>> objects = parser.Parse(decodedContent);
 
-        Console.WriteLine(objects.SelectMany(dictionary => dictionary).Count());
-
-        return Ok(objects);
+        return Ok(parseMapper.ToResponse(objects));
 
     }
     

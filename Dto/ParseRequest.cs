@@ -1,6 +1,4 @@
-﻿using Kamsoft.Models;
-
-namespace Kamsoft.Dto;
+﻿namespace Kamsoft.Dto;
 
 public class ParseRequest {
     public string Type { get; set; }
