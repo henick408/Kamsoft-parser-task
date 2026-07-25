@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Kamsoft.Dto;
+﻿using Kamsoft.Dto;
 using Kamsoft.Models;
 using Kamsoft.Parsers;
 using Kamsoft.Util;
@@ -31,7 +30,7 @@ public class ParseController(
 
         IContentParser parser = parserProvider.Get(type);
 
-        IList<object?> objects = parser.Parse(decodedContent);
+        IList<object> objects = parser.Parse(decodedContent);
 
         return Ok(objects);
 
