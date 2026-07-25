@@ -5,6 +5,6 @@ namespace Kamsoft.Parsers;
 public interface IContentParser {
     
     ParseContentType Type { get; }
-
-    IList<object> Parse(string content);
+    
+    IList<Dictionary<string, object?>> Parse(string content);
 }

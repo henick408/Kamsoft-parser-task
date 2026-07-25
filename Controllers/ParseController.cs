@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Kamsoft.Controllers;
 
 [ApiController]
-[Route(("api/v1"))]
+[Route("api/v1")]
 public class ParseController(
     StringBase64Decoder base64Decoder,
     ParserProvider parserProvider
@@ -30,7 +30,9 @@ public class ParseController(
 
         IContentParser parser = parserProvider.Get(type);
 
-        IList<object> objects = parser.Parse(decodedContent);
+        IList<Dictionary<string, object?>> objects = parser.Parse(decodedContent);
+
+        Console.WriteLine(objects.SelectMany(dictionary => dictionary).Count());
 
         return Ok(objects);
 
