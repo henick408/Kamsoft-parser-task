@@ -1,6 +1,6 @@
 ﻿namespace Kamsoft.Dto;
 
 public class ErrorResponse {
-    public bool Status { get; set; }
+    public bool Success { get; set; }
     public string Message { get; set; }
 }

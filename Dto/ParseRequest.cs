@@ -1,6 +1,6 @@
 ﻿namespace Kamsoft.Dto;
 
 public class ParseRequest {
-    public string Type { get; set; }
-    public string Content { get; set; }
+    public required string Type { get; set; }
+    public required string Content { get; set; }
 }

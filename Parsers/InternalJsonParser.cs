@@ -7,6 +7,7 @@ public class InternalJsonParser : IContentParser {
     public ParseContentType Type => ParseContentType.INTERNAL_JSON;
     
     public IList<Dictionary<string, object?>> Parse(string content) {
-        return JsonSerializer.Deserialize<IList<Dictionary<string, object?>>>(content);
+        return JsonSerializer.Deserialize<IList<Dictionary<string, object?>>>(content)
+               ?? throw new JsonException("");
     }
 }
