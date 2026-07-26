@@ -14,11 +14,11 @@ Sprawdzenie zainstalowanej wersji:
 
 1. Należy sklonować repozytorium:
 
-    git clone <repository-url>
+    git clone **https://github.com/henick408/kamsoft-parser-task**
 
 2. Przejść do katalogu projektu:
 
-    cd <project-directory>
+    cd **kamsoft-parser-task**
 
 3. Uruchomić aplikację:
 
