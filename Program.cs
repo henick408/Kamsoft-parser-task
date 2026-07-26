@@ -12,17 +12,22 @@ public class Program {
             .AddJsonOptions(options => {
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
-        builder.Services.AddOpenApi();
+
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        
         builder.Services.AddBase64Encoder();
         builder.Services.AddParsers();
         builder.Services.AddMappers();
+        
         builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
         builder.Services.AddProblemDetails();
 
         var app = builder.Build();
         
         if (app.Environment.IsDevelopment()) {
-            app.MapOpenApi();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
 
         app.UseAuthorization();
