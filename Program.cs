@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Kamsoft.Config;
+using Kamsoft.Exceptions;
 
 namespace Kamsoft;
 
@@ -15,6 +16,8 @@ public class Program {
         builder.Services.AddBase64Encoder();
         builder.Services.AddParsers();
         builder.Services.AddMappers();
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+        builder.Services.AddProblemDetails();
 
         var app = builder.Build();
         
@@ -24,6 +27,7 @@ public class Program {
 
         app.UseAuthorization();
 
+        app.UseExceptionHandler();
 
         app.MapControllers();
 

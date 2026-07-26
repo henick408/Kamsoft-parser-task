@@ -35,7 +35,7 @@ public class ParseController(
 
         IContentParser parser = parserProvider.Get(type);
 
-        IList<Dictionary<string, object?>> objects = parser.Parse(decodedContent);
+        IList<IDictionary<string, object?>> objects = parser.Parse(decodedContent);
 
         return Ok(parseMapper.ToResponse(objects));
 

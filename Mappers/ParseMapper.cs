@@ -3,7 +3,7 @@
 namespace Kamsoft.Mappers;
 
 public class ParseMapper : IParseMapper {
-    public ParseResponse ToResponse(IList<Dictionary<string, object?>> content) {
+    public ParseResponse ToResponse(IList<IDictionary<string, object?>> content) {
         return new ParseResponse {
             Success = true,
             Count = content.Count,

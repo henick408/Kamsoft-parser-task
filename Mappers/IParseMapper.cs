@@ -3,5 +3,5 @@
 namespace Kamsoft.Mappers;
 
 public interface IParseMapper {
-    ParseResponse ToResponse(IList<Dictionary<string, object?>> content);
+    ParseResponse ToResponse(IList<IDictionary<string, object?>> content);
 }

@@ -6,8 +6,8 @@ namespace Kamsoft.Parsers;
 public class InternalJsonParser : IContentParser {
     public ParseContentType Type => ParseContentType.INTERNAL_JSON;
     
-    public IList<Dictionary<string, object?>> Parse(string content) {
-        return JsonSerializer.Deserialize<IList<Dictionary<string, object?>>>(content)
-               ?? throw new JsonException("");
+    public IList<IDictionary<string, object?>> Parse(string content) {
+        return JsonSerializer.Deserialize<IList<IDictionary<string, object?>>>(content)
+               ?? throw new JsonException("JSON content cannot be empty.");
     }
 }
