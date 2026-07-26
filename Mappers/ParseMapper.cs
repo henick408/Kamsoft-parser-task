@@ -6,7 +6,7 @@ public class ParseMapper : IParseMapper {
     public ParseResponse ToResponse(IList<Dictionary<string, object?>> content) {
         return new ParseResponse {
             Success = true,
-            Count = content.SelectMany(dictionary => dictionary).Count(),
+            Count = content.Count,
             Data = content
         };
     }
